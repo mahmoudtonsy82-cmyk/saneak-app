@@ -243,6 +243,12 @@
       msgBox.style.display = "block";
       msgBox.textContent = "تم تسجيل بيانات طلبك (" + service + ") للعميل " + name + ". لتأكيد الإرسال الفوري تواصل عبر واتساب مع بيانات التحويل: " + (ref || "غير مرفق");
     });
+
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/saneak-app/service-worker.js");
+      });
+    }
   </script>
 </body>
 </html>
