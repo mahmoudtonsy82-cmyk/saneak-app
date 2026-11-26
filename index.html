@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0f172a" />
   <link rel="manifest" href="/saneak-app/manifest.json" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/saneak-app/icon-192.png" />
+  <link rel="apple-touch-icon" href="/saneak-app/icon-192.png" />
   <title>تطبيق صانعك - المرحلة الثانية</title>
   <style>
     body {
@@ -156,7 +158,7 @@
 </head>
 <body>
   <div class="box">
-    <div class="badge">المرحلة الثانية — قيد التطوير</div>
+    <div class="badge">المرحلة الثانية — جاهز للتشغيل</div>
     <h1>تطبيق صانعك (Saneak App)</h1>
     <p>منصة صانعك لتقديم الخدمات الرقمية والحرفية وإدارة طلبات العملاء بسهولة.</p>
 
@@ -224,6 +226,8 @@
   </div>
 
   <script>
+    const WHATSAPP_NUMBER = "201122434369";
+
     function copyWallet() {
       const walletText = document.getElementById("walletNum").textContent;
       navigator.clipboard.writeText(walletText);
@@ -239,9 +243,34 @@
       const ref = document.getElementById("transferRef").value.trim();
       const notes = document.getElementById("orderNotes").value.trim();
 
+      const messageLines = [
+        "طلب جديد من تطبيق صانعك",
+        "• الاسم: " + name,
+        "• رقم التواصل: " + phone,
+        "• الخدمة: " + service,
+        "• طريقة الدفع: " + payment,
+        "• مرجع التحويل / المحفظة: " + (ref || "غير مرفق"),
+        "• التفاصيل: " + (notes || "لا توجد ملاحظات إضافية")
+      ];
+
+      const whatsappUrl =
+        "https://wa.me/" +
+        WHATSAPP_NUMBER +
+        "?text=" +
+        encodeURIComponent(messageLines.join("\n"));
+
       const msgBox = document.getElementById("confirmMsg");
       msgBox.style.display = "block";
-      msgBox.textContent = "تم تسجيل بيانات طلبك (" + service + ") للعميل " + name + ". لتأكيد الإرسال الفوري تواصل عبر واتساب مع بيانات التحويل: " + (ref || "غير مرفق");
+      msgBox.innerHTML =
+        "تم تجهيز طلبك (" +
+        service +
+        ") للعميل " +
+        name +
+        ". يتم الآن فتح واتساب لإرسال الطلب... إذا لم يفتح تلقائيًا <a href='" +
+        whatsappUrl +
+        "' target='_blank' rel='noopener noreferrer' style='color:#6ee7b7;font-weight:bold;'>اضغط هنا للإرسال</a>.";
+
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     });
 
     if ("serviceWorker" in navigator) {
