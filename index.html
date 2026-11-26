@@ -1,150 +1,200 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تطبيق صانعك (Saneak App)</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    body {
-      background-color: #121824;
-      color: #f8fafc;
-      display: flex;
-      justify-content: center;
-      padding: 24px 16px;
-      min-height: 100vh;
-    }
-    .container {
-      background-color: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 20px;
-      max-width: 480px;
-      width: 100%;
-      padding: 28px 20px;
-      text-align: center;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    }
-    .badge {
-      display: inline-block;
-      background-color: #0284c7;
-      color: #ffffff;
-      padding: 6px 18px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 20px;
-    }
-    h1 {
-      color: #38bdf8;
-      font-size: 2rem;
-      font-weight: 800;
-      line-height: 1.3;
-      margin-bottom: 16px;
-    }
-    .subtitle {
-      color: #cbd5e1;
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 28px;
-    }
-    .section-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #ffffff;
-      padding-bottom: 12px;
-      border-bottom: 1px solid #334155;
-      margin-bottom: 20px;
-    }
-    .card {
-      background-color: #162032;
-      border: 1px solid #334155;
-      border-radius: 14px;
-      padding: 20px 16px;
-      margin-bottom: 16px;
-      text-align: center;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-    .card:hover {
-      border-color: #38bdf8;
-      transform: translateY(-2px);
-    }
-    .card h3 {
-      color: #38bdf8;
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-    }
-    .card p {
-      color: #94a3b8;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      margin-bottom: 16px;
-    }
-    .btn {
-      display: inline-block;
-      background-color: #0284c7;
-      color: #ffffff;
-      text-decoration: none;
-      padding: 10px 24px;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: background-color 0.2s;
-    }
-    .btn:hover {
-      background-color: #0369a1;
-    }
-    .footer-note {
-      margin-top: 24px;
-      padding-top: 16px;
-      border-top: 1px solid #334155;
-      font-size: 0.9rem;
-      color: #94a3b8;
-    }
-    .footer-note strong {
-      color: #38bdf8;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق صانعك (Saneak App)</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #121518;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            background-color: #181c20;
+            border: 1px solid #2a3036;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .badge {
+            background-color: #2eb8ac;
+            color: #121518;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 6px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #2eb8ac;
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+        .subtitle-en {
+            color: #2eb8ac;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            direction: ltr;
+        }
+        .description {
+            color: #d1d5db;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .section-title {
+            color: #e5b887;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #2a3036;
+        }
+        .card {
+            background-color: #14181b;
+            border: 1px solid #262c32;
+            border-radius: 14px;
+            padding: 22px 18px;
+            margin-bottom: 18px;
+            transition: border-color 0.3s;
+        }
+        .card:hover {
+            border-color: #2eb8ac;
+        }
+        .card h3 {
+            color: #2eb8ac;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .card p {
+            color: #9ca3af;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+        .btn {
+            background-color: #2eb8ac;
+            color: #121518;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            padding: 10px 28px;
+            border-radius: 8px;
+            display: inline-block;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        .btn:hover {
+            background-color: #259c91;
+        }
+        .btn:active {
+            transform: scale(0.98);
+        }
+        .footer {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #2a3036;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+        .payment-info {
+            margin-bottom: 18px;
+            color: #d1d5db;
+        }
+        .payment-number {
+            color: #2eb8ac;
+            font-weight: bold;
+            direction: ltr;
+            display: inline-block;
+        }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-telegram {
+            background-color: #24A1DE;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 10px 22px;
+            border-radius: 8px;
+            display: inline-block;
+            transition: background-color 0.2s;
+        }
+        .btn-telegram:hover {
+            background-color: #1d88bc;
+        }
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: #121518;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 10px 22px;
+            border-radius: 8px;
+            display: inline-block;
+            transition: background-color 0.2s;
+        }
+        .btn-whatsapp:hover {
+            background-color: #1ebe5d;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="container">
-    <div class="badge">المرحلة الثانية – قيد التطوير</div>
-    
-    <h1>تطبيق صانعك<br>(Saneak App)</h1>
-    
-    <p class="subtitle">
-      منصة صانعك لتقديم الخدمات الرقمية والحرفية وإدارة طلبات العملاء بسهولة.
-    </p>
+<div class="container">
+    <div class="badge">المرحلة الثانية - قيد التطوير</div>
+    <h1>تطبيق صانعك</h1>
+    <div class="subtitle-en">(Saneak App)</div>
+    <p class="description">منصة صانعك لتقديم الخدمات الرقمية والحرفية وإدارة طلبات العملاء بسهولة.</p>
 
-    <h2 class="section-title">خدمات صانعك</h2>
+    <div class="section-title">خدمات صانعك</div>
 
     <div class="card">
-      <h3>تصميم وتنفيذ المنتجات</h3>
-      <p>تجهيز القوالب والنماذج المخصصة حسب مواصفات العميل بدقة عالية.</p>
-      <a href="https://api.whatsapp.com/send?phone=201000000000&text=مرحباً، أرغب في طلب خدمة: تصميم وتنفيذ المنتجات" target="_blank" class="btn">اطلب الخدمة الآن</a>
+        <h3>تصميم وتنفيذ المنتجات</h3>
+        <p>تجهيز القوالب والنماذج المخصصة حسب مواصفات العميل بدقة عالية.</p>
+        <a href="https://api.whatsapp.com/send?phone=201122434369&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%B7%D9%84%D8%A8%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AA%D8%B5%D9%85%D9%8A%D9%85%20%D9%88%D8%AA%D9%86%D9%81%D9%8A%D8%B0%20%D8%A7%D9%84%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA" target="_blank" class="btn">اطلب الخدمة الآن</a>
     </div>
 
     <div class="card">
-      <h3>تطوير المتاجر والصفحات</h3>
-      <p>إنشاء صفحات عرض احترافية للمشاريع الناشئة وربطها بوسائل التواصل.</p>
-      <a href="https://api.whatsapp.com/send?phone=201000000000&text=مرحباً، أرغب في طلب خدمة: تطوير المتاجر والصفحات" target="_blank" class="btn">اطلب الخدمة الآن</a>
+        <h3>تطوير المتاجر والصفحات</h3>
+        <p>إنشاء صفحات عرض احترافية للمشاريع الناشئة وربطها بوسائل التواصل.</p>
+        <a href="https://api.whatsapp.com/send?phone=201122434369&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%B7%D9%84%D8%A8%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AA%D8%B7%D9%88%D9%8A%D8%B1%20%D8%A7%D9%84%D9%85%D8%AA%D8%A7%D8%AC%D8%B1%20%D9%88%D8%A7%D9%84%D8%B5%D9%81%D8%AD%D8%A7%D8%AA" target="_blank" class="btn">اطلب الخدمة الآن</a>
     </div>
 
     <div class="card">
-      <h3>الاستشارات والدعم الفني</h3>
-      <p>تقديم الحلول التقنية والإشراف على تنفيذ المشاريع خطوة بخطوة.</p>
-      <a href="https://api.whatsapp.com/send?phone=201000000000&text=مرحباً، أرغب في طلب خدمة: الاستشارات والدعم الفني" target="_blank" class="btn">اطلب الخدمة الآن</a>
+        <h3>الاستشارات والدعم الفني</h3>
+        <p>تقديم الحلول التقنية والإشراف على تنفيذ المشاريع خطوة بخطوة.</p>
+        <a href="https://api.whatsapp.com/send?phone=201122434369&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%B7%D9%84%D8%A8%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1%D8%A7%D8%AA%20%D9%88%D8%A7%D9%84%D8%AF%D8%B9%D9%85%20%D8%A7%D9%84%D9%81%D9%86%D9%8A" target="_blank" class="btn">اطلب الخدمة الآن</a>
     </div>
 
-    <div class="footer-note">
-      للدفع السريع عبر أورنج كاش: <strong>01122434369</strong>
+    <div class="footer">
+        <p class="payment-info">للدفع السريع عبر أورنج كاش: <span class="payment-number">01122434369</span></p>
+        <div class="contact-links">
+            <a href="https://t.me/+201122434369" target="_blank" class="btn-telegram">تواصل عبر تيليجرام</a>
+            <a href="https://api.whatsapp.com/send?phone=201122434369" target="_blank" class="btn-whatsapp">تواصل عبر واتساب</a>
+        </div>
     </div>
-  </div>
+</div>
 
 </body>
 </html>
