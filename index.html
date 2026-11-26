@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="manifest" href="/saneak-app/manifest.json" />
   <title>تطبيق صانعك - المرحلة الثانية</title>
   <style>
     body {
@@ -223,40 +225,23 @@
 
   <script>
     function copyWallet() {
-      const walletText = document.getElementById('walletNum').textContent;
+      const walletText = document.getElementById("walletNum").textContent;
       navigator.clipboard.writeText(walletText);
-      alert('تم نسخ رقم محفظة Orange Cash: ' + walletText);
+      alert("تم نسخ رقم محفظة Orange Cash: " + walletText);
     }
 
-    document.getElementById('orderForm').addEventListener('submit', function(e) {
+    document.getElementById("orderForm").addEventListener("submit", function (e) {
       e.preventDefault();
+      const name = document.getElementById("clientName").value.trim();
+      const phone = document.getElementById("clientPhone").value.trim();
+      const service = document.getElementById("serviceType").value;
+      const payment = document.getElementById("paymentMethod").value;
+      const ref = document.getElementById("transferRef").value.trim();
+      const notes = document.getElementById("orderNotes").value.trim();
 
-      const whatsappNumber = '201122434369';
-      const name = document.getElementById('clientName').value.trim();
-      const phone = document.getElementById('clientPhone').value.trim();
-      const service = document.getElementById('serviceType').value;
-      const payMethod = document.getElementById('paymentMethod').value;
-      const transferRef = document.getElementById('transferRef').value.trim() || 'غير مضاف';
-      const notes = document.getElementById('orderNotes').value.trim() || 'لا توجد تفاصيل إضافية';
-
-      const message =
-        'طلب خدمة جديد - تطبيق صانعك (Saneak App)\n' +
-        '-----------------------------\n' +
-        'الاسم: ' + name + '\n' +
-        'رقم الهاتف / واتساب: ' + phone + '\n' +
-        'الخدمة المطلوبة: ' + service + '\n' +
-        'طريقة الدفع: ' + payMethod + '\n' +
-        'رقم المحفظة المحوِّل منها / مرجع التحويل: ' + transferRef + '\n' +
-        'تفاصيل الطلب: ' + notes;
-
-      const waUrl = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message);
-
-      const msgBox = document.getElementById('confirmMsg');
-      msgBox.textContent = 'تم تجهيز طلبك يا ' + name + ' وجارٍ فتح واتساب لإرساله مباشرة إلى فريق صانعك...';
-      msgBox.style.display = 'block';
-
-      window.open(waUrl, '_blank');
-      this.reset();
+      const msgBox = document.getElementById("confirmMsg");
+      msgBox.style.display = "block";
+      msgBox.textContent = "تم تسجيل بيانات طلبك (" + service + ") للعميل " + name + ". لتأكيد الإرسال الفوري تواصل عبر واتساب مع بيانات التحويل: " + (ref || "غير مرفق");
     });
   </script>
 </body>
