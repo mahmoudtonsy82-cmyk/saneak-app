@@ -7,7 +7,6 @@
   <meta name="description" content="تطبيق صانعك - تصميم وتنفيذ المنتجات، تطوير المتاجر والصفحات، والاستشارات والدعم الفني." />
   <title>صانعك | Saneak App - حلول رقمية وتجارية متكاملة</title>
   <link rel="manifest" href="manifest.json" />
-  <!-- أيقونة مدمجة تلقائياً بدون الحاجة لملفات صور خارجية -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='110' fill='%230f172a'/%3E%3Ccircle cx='256' cy='256' r='190' fill='none' stroke='%23f59e0b' stroke-width='16'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-size='135' font-weight='bold'%3Eصانعك%3C/text%3E%3C/svg%3E" />
   <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='110' fill='%230f172a'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23f59e0b' font-family='sans-serif' font-size='135' font-weight='bold'%3Eصانعك%3C/text%3E%3C/svg%3E" />
 
@@ -44,7 +43,6 @@
       overflow-x: hidden;
     }
 
-    /* Header */
     header {
       background: var(--primary);
       color: #fff;
@@ -104,7 +102,6 @@
       font-weight: 700 !important;
     }
 
-    /* Hero Section */
     .hero {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
       color: #fff;
@@ -184,7 +181,6 @@
       color: var(--accent);
     }
 
-    /* Sections */
     .section {
       max-width: 1100px;
       margin: 0 auto;
@@ -207,7 +203,6 @@
       font-size: 1rem;
     }
 
-    /* Services & Pricing Grid */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -316,7 +311,6 @@
       color: var(--primary);
     }
 
-    /* Payment & Terms Box */
     .payment-box {
       background: var(--primary);
       color: #fff;
@@ -366,7 +360,6 @@
       color: #e2e8f0;
     }
 
-    /* Order Form */
     .form-container {
       max-width: 680px;
       margin: 0 auto;
@@ -450,7 +443,6 @@
       border: 1px solid #bbf7d0;
     }
 
-    /* Footer */
     footer {
       background: var(--primary);
       color: #94a3b8;
@@ -474,7 +466,6 @@
 </head>
 <body>
 
-  <!-- Header -->
   <header>
     <div class="nav-container">
       <a href="#" class="brand">صانعك <span>| Saneak</span></a>
@@ -486,7 +477,6 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
       <span class="badge">منصة متكاملة لتنفيذ المشاريع الرقمية والتجارية</span>
@@ -499,7 +489,6 @@
     </div>
   </section>
 
-  <!-- Services & Pricing Section -->
   <section id="services" class="section">
     <div class="section-header">
       <h2>الخدمات والباقات (بالجنيه المصري)</h2>
@@ -507,7 +496,6 @@
     </div>
 
     <div class="grid">
-      <!-- Service 1 -->
       <div class="card">
         <div>
           <div class="card-icon">🛠️</div>
@@ -524,7 +512,6 @@
         <button type="button" class="btn-card" onclick="selectService(0)">اطلب هذه الخدمة</button>
       </div>
 
-      <!-- Service 2 (Featured) -->
       <div class="card featured">
         <span class="ribbon">الأكثر طلبًا</span>
         <div>
@@ -542,7 +529,6 @@
         <button type="button" class="btn-card" onclick="selectService(1)">اطلب تطوير متجر</button>
       </div>
 
-      <!-- Service 3 -->
       <div class="card">
         <div>
           <div class="card-icon">💡</div>
@@ -561,7 +547,6 @@
     </div>
   </section>
 
-  <!-- Payment & Terms Section -->
   <section id="payment" class="section">
     <div class="payment-box">
       <div>
@@ -582,7 +567,6 @@
     </div>
   </section>
 
-  <!-- Order Form Section -->
   <section id="order" class="section">
     <div class="section-header">
       <h2>أرسل طلبك الآن</h2>
@@ -625,13 +609,11 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>© 2026 تطبيق صانعك (Saneak App) — جميع الحقوق محفوظة.</p>
   </footer>
 
   <script>
-    // اختيار الخدمة تلقائياً حسب الترتيب والانتقال للنموذج
     function selectService(index) {
       const select = document.getElementById('serviceType');
       if (select && select.options[index + 1]) {
@@ -648,7 +630,6 @@
       }
     }
 
-    // نسخ رقم المحفظة
     function copyWallet() {
       const number = document.getElementById('walletNumber').innerText.trim();
       navigator.clipboard.writeText(number).then(() => {
@@ -658,7 +639,6 @@
       });
     }
 
-    // إرسال الطلب والتحقق من البيانات
     function submitOrder(e) {
       e.preventDefault();
       const name = document.getElementById('clientName').value.trim();
@@ -679,19 +659,19 @@
       alertBox.style.display = 'block';
 
       const ownerWhatsApp = '201122434369';
-      const message =
-        السلام عليكم، طلب جديد من تطبيق *صانعك (Saneak)*:%0A%0A +
-       👤 *الاسم:* ${encodeURIComponent(name)}%0A` +
-       📱 *الهاتف:* ${encodeURIComponent(phone)}%0A` +
-       🛠️ *الخدمة:* ${encodeURIComponent(service)}%0A` +
-       📝 *التفاصيل:* ${encodeURIComponent(details)}%0A%0A` +
-        ✅ موافق على نظام العمل (50% عربون عند البدء).;
-
-      const whatsappUrl = https://wa.me/${ownerWhatsApp}?text=${message};
+      const lines = [
+        'طلب جديد من تطبيق صانعك (Saneak):',
+        'الاسم: ' + name,
+        'الهاتف: ' + phone,
+        'الخدمة: ' + service,
+        'التفاصيل: ' + details,
+        'موافق على نظام العمل (50% عربون عند البدء).'
+      ];
+      const message = encodeURIComponent(lines.join('\n'));
+      const whatsappUrl = 'https://wa.me/' + ownerWhatsApp + '?text=' + message;
       window.open(whatsappUrl, '_blank');
     }
 
-    // تسجيل Service Worker
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./service-worker.js').catch(() => {});
