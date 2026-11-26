@@ -521,7 +521,7 @@
             <li>دعم فني لتوضيح خطوات التنفيذ</li>
           </ul>
         </div>
-        <button class="btn-card" onclick="selectService('تصميم وتنفيذ المنتجات (تبدأ من 450 ج.م)')">اطلب هذه الخدمة</button>
+        <button type="button" class="btn-card" onclick="selectService(0)">اطلب هذه الخدمة</button>
       </div>
 
       <!-- Service 2 (Featured) -->
@@ -539,7 +539,7 @@
             <li>تعديلان مجانيان بعد العرض الأولي</li>
           </ul>
         </div>
-        <button class="btn-card" onclick="selectService('تطوير المتاجر والصفحات (1,000 - 4,500 ج.م)')">اطلب تطوير متجر</button>
+        <button type="button" class="btn-card" onclick="selectService(1)">اطلب تطوير متجر</button>
       </div>
 
       <!-- Service 3 -->
@@ -556,7 +556,7 @@
             <li>باقات متابعة أسبوعية أو شهرية</li>
           </ul>
         </div>
-        <button class="btn-card" onclick="selectService('الاستشارات والدعم الفني (تبدأ من 250 ج.م)')">احجز استشارة الآن</button>
+        <button type="button" class="btn-card" onclick="selectService(2)">احجز استشارة الآن</button>
       </div>
     </div>
   </section>
@@ -576,7 +576,7 @@
       <div class="wallet-card">
         <div style="font-size: 0.95rem; color: #cbd5e1;">الدفع عبر محفظة <strong>Orange Cash</strong></div>
         <div class="wallet-number" id="walletNumber">01122434369</div>
-        <button class="copy-btn" onclick="copyWallet()">نسخ رقم المحفظة</button>
+        <button type="button" class="copy-btn" onclick="copyWallet()">نسخ رقم المحفظة</button>
         <div id="copyFeedback" style="font-size: 0.85rem; color: #4ade80; margin-top: 0.6rem; display: none;">✓ تم نسخ الرقم بنجاح!</div>
       </div>
     </div>
@@ -631,12 +631,21 @@
   </footer>
 
   <script>
-    // اختيار الخدمة تلقائياً والانتقال للنموذج
-    function selectService(serviceName) {
+    // اختيار الخدمة تلقائياً حسب الترتيب والانتقال للنموذج
+    function selectService(index) {
       const select = document.getElementById('serviceType');
-      select.value = serviceName;
-      document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
-      document.getElementById('clientName').focus();
+      if (select && select.options[index + 1]) {
+        select.selectedIndex = index + 1;
+        select.dispatchEvent(new Event('change'));
+      }
+      const orderSection = document.getElementById('order');
+      if (orderSection) {
+        orderSection.scrollIntoView({ behavior: 'smooth' });
+      }
+      const nameInput = document.getElementById('clientName');
+      if (nameInput) {
+        setTimeout(() => nameInput.focus(), 400);
+      }
     }
 
     // نسخ رقم المحفظة
