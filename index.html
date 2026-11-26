@@ -62,6 +62,46 @@
       font-size: 14px;
       color: #cbd5e1;
     }
+    .payment-box {
+      background: #0f172a;
+      border: 1px solid #f97316;
+      border-radius: 10px;
+      padding: 18px;
+      margin-top: 16px;
+    }
+    .payment-title {
+      color: #fb923c;
+      margin: 0 0 10px 0;
+      font-size: 18px;
+    }
+    .wallet-number {
+      display: inline-block;
+      background: #1e293b;
+      border: 1px dashed #f97316;
+      color: #fed7aa;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin: 6px 0;
+      direction: ltr;
+    }
+    .copy-btn {
+      background: #f97316;
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-right: 8px;
+      width: auto;
+    }
+    .copy-btn:hover {
+      background: #ea580c;
+    }
     .order-form {
       background: #0f172a;
       border: 1px solid #334155;
@@ -86,7 +126,7 @@
       color: #f8fafc;
       font-family: inherit;
     }
-    button {
+    .submit-btn {
       background: #0284c7;
       color: #fff;
       border: none;
@@ -97,7 +137,7 @@
       cursor: pointer;
       width: 100%;
     }
-    button:hover {
+    .submit-btn:hover {
       background: #0369a1;
     }
     .msg {
@@ -134,6 +174,21 @@
       </div>
     </div>
 
+    <h2>الدفع عبر Orange Cash</h2>
+    <div class="payment-box">
+      <h3 class="payment-title">خطوات تأكيد الدفع بالمحفظة الإلكترونية</h3>
+      <p style="margin: 0 0 8px 0; font-size: 14px; color: #cbd5e1;">
+        1. حوّل قيمة الخدمة أو العربون المتفق عليه عبر <strong>Orange Cash</strong> إلى الرقم التالي:
+      </p>
+      <div>
+        <span class="wallet-number" id="walletNum">01122434369</span>
+        <button type="button" class="copy-btn" onclick="copyWallet()">نسخ الرقم</button>
+      </div>
+      <p style="margin: 8px 0 0 0; font-size: 14px; color: #cbd5e1;">
+        2. أدخل <strong>رقم الهاتف المحوِّل منه</strong> أو <strong>رقم عملية التحويل</strong> في نموذج الطلب بالأسفل لتأكيد طلبك فورًا.
+      </p>
+    </div>
+
     <h2>اطلب خدمتك الآن</h2>
     <form class="order-form" id="orderForm">
       <label for="clientName">الاسم بالكامل</label>
@@ -149,21 +204,37 @@
         <option value="الاستشارات والدعم الفني">الاستشارات والدعم الفني</option>
       </select>
 
+      <label for="paymentMethod">طريقة الدفع</label>
+      <select id="paymentMethod">
+        <option value="Orange Cash">محفظة Orange Cash</option>
+        <option value="الدفع عند الاتفاق">الدفع بعد مراجعة التفاصيل</option>
+      </select>
+
+      <label for="transferRef">رقم المحفظة المحوِّل منها أو مرجع التحويل (اختياري)</label>
+      <input type="text" id="transferRef" placeholder="مثال: 012xxxxxxxx أو رقم العملية" />
+
       <label for="orderNotes">تفاصيل الطلب</label>
       <textarea id="orderNotes" rows="3" placeholder="اكتب تفاصيل ومواصفات طلبك..."></textarea>
 
-      <button type="submit">إرسال الطلب</button>
+      <button type="submit" class="submit-btn">إرسال الطلب وتأكيد البيانات</button>
       <div class="msg" id="confirmMsg"></div>
     </form>
   </div>
 
   <script>
+    function copyWallet() {
+      const walletText = document.getElementById('walletNum').textContent;
+      navigator.clipboard.writeText(walletText);
+      alert('تم نسخ رقم محفظة Orange Cash: ' + walletText);
+    }
+
     document.getElementById('orderForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const name = document.getElementById('clientName').value.trim();
       const service = document.getElementById('serviceType').value;
+      const payMethod = document.getElementById('paymentMethod').value;
       const msgBox = document.getElementById('confirmMsg');
-      msgBox.textContent = 'تم استلام طلبك بنجاح يا ' + name + ' بخصوص خدمة (' + service + '). سنتواصل معك قريباً.';
+      msgBox.textContent = 'تم استلام طلبك بنجاح يا ' + name + ' لخدمة (' + service + ') بطريقة دفع (' + payMethod + '). سنتواصل معك قريباً لتأكيد التنفيذ.';
       msgBox.style.display = 'block';
       this.reset();
     });
