@@ -1,11 +1,25 @@
 {
   "name": "تطبيق صانعك (Saneak App)",
   "short_name": "صانعك",
+  "description": "منصة صانعك لتقديم الخدمات الرقمية والحرفية وإدارة طلبات العملاء بسهولة.",
   "start_url": "/saneak-app/",
   "scope": "/saneak-app/",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#0f172a",
-  "dir": "rtl",
-  "lang": "ar"
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/saneak-app/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/saneak-app/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
 }
